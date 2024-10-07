@@ -166,9 +166,12 @@ async function inicializarBaseDeDatos() {
 
 
 //Definir aqui la ruta con el método GET para obtener todos los Musculos
-
+app.get('/musculos', async (req, res) => {
+    const musculos = await Musculo.findAll();
+    res.json(musculos);
+});
 
 // Inicia el servidor
 inicializarBaseDeDatos().then(() => {
-    app.listen(3000, () => console.log('Servidor corriendo en http://localhost:3000'));
+    app.listen(3000, () => console.log('Servidor corriendo en http://localhost:3000/musculos'));
 });
